@@ -1,0 +1,25 @@
+﻿@model Kintai.Models.Attendance
+
+<h2>今日の打刻</h2>
+
+@if (Model == null)
+{
+    <p>まだ打刻がありません。</p>
+    <a class="btn btn-primary" href="/Attendance/ClockIn">出勤する</a>
+}
+else
+{
+    <p>出勤: @Model.ClockIn</p>
+    <p>退勤: @Model.ClockOut</p>
+    <p>勤務時間: @Model.WorkingHours.ToString(@"hh\:mm")</p>
+
+    @if (Model.ClockIn == null)
+    {
+        <a class="btn btn-primary" href="/Attendance/ClockIn">出勤する</a>
+    }
+
+    @if (Model.ClockIn != null && Model.ClockOut == null)
+    {
+        <a class="btn btn-danger" href="/Attendance/ClockOut">退勤する</a>
+    }
+}

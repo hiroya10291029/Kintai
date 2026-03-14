@@ -1,0 +1,66 @@
+## Build results
+bin/
+obj/
+out/
+Debug/
+Release/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json
+
+## Logs
+*.log
+logs/
+LogFiles/
+
+## Publish output
+publish/
+wwwroot/lib/
+
+## NuGet
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+## Entity Framework
+Migrations/ __EFMigrationsHistory
+*.db
+*.mdf
+*.ldf
+
+## Rider / JetBrains
+.idea/
+*.iml
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## Node (if using frontend build)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+## Cache
+*.cache
+*.tmp
+*.temp
+
+## Secrets
+secrets.json
+*.key
+*.pfx
+
+## Publish profiles
+Properties/PublishProfiles/

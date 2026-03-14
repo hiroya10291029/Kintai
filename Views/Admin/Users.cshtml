@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Kintai.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "社員一覧";
+}
+
+<h2>社員一覧</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>氏名</th>
+            <th>Email</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>
+                    <a href="/Admin/EditUser/@user.Id">編集</a>
+                    <a href="/Admin/DeleteUser/@user.Id">削除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
