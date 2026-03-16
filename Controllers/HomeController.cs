@@ -1,4 +1,5 @@
 using Kintai.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -12,7 +13,7 @@ namespace Kintai.Controllers
         {
             _signInManager = signInManager;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             // すでにログインしている場合はログアウト

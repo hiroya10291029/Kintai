@@ -11,7 +11,13 @@ else
 {
     <p>出勤: @Model.ClockIn</p>
     <p>退勤: @Model.ClockOut</p>
-    <p>勤務時間: @Model.WorkingHours.ToString(@"hh\:mm")</p>
+
+    <p>
+        勤務時間:
+        <span id="workingTime">
+            @Model.WorkingHours.ToString(@"hh\:mm")
+        </span>
+    </p>
 
     @if (Model.ClockIn == null)
     {
@@ -21,5 +27,30 @@ else
     @if (Model.ClockIn != null && Model.ClockOut == null)
     {
         <a class="btn btn-danger" href="/Attendance/ClockOut">退勤する</a>
+
+        <script>
+            // C# の ClockIn を JS の Date に変換
+            const clockIn = new Date("@Model.ClockIn.Value.ToString("yyyy-MM-ddTHH:mm:ss")");
+
+            function updateWorkingTime() {
+                const now = new Date();
+                const diffMs = now - clockIn;
+
+                // ミリ秒 → 時間・分・秒に変換
+                const totalSeconds = Math.floor(diffMs / 1000);
+                const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+                const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+                const seconds = String(totalSeconds % 60).padStart(2, '0');
+
+                document.getElementById("workingTime").textContent =
+                    `${hours}:${minutes}:${seconds}`;
+            }
+
+            // 1秒ごとに更新
+            setInterval(updateWorkingTime, 1000);
+
+            // 初回表示
+            updateWorkingTime();
+        </script>
     }
 }
