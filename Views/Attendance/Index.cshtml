@@ -1,28 +1,28 @@
 ﻿@model IEnumerable<Kintai.Models.Attendance>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "勤怠一覧";
 }
 
-<h1>Index</h1>
+<h1>勤怠一覧</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">新規作成</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.WorkDate)
+                勤務日
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClockIn)
+                出勤
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClockOut)
+                退勤
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                社員
             </th>
             <th></th>
         </tr>
@@ -31,21 +31,21 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.WorkDate)
+                @item.WorkDate.ToString("yyyy-MM-dd")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ClockIn)
+                @item.ClockIn?.ToString("HH:mm")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ClockOut)
+                @item.ClockOut?.ToString("HH:mm")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @item.User?.FullName
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">編集</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">詳細</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">削除</a>
             </td>
         </tr>
 }

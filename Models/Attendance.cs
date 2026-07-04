@@ -13,17 +13,21 @@ namespace Kintai.Models
 
         [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "勤務日")]
         public DateTime WorkDate { get; set; }
 
         [DataType(DataType.Time)]
+        [Display(Name = "出勤")]
         public DateTime? ClockIn { get; set; }
 
         [DataType(DataType.Time)]
+        [Display(Name = "退勤")]
         public DateTime? ClockOut { get; set; }
 
+        [Display(Name = "勤務時間")]
         public TimeSpan WorkingHours { get; set; }
 
-
+        [Display(Name = "社員")]
         [ForeignKey("UserId")]
         public ApplicationUser? User { get; set; }
     }
